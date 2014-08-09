@@ -1,0 +1,18 @@
+<div class="container">
+    <h1>add a new player...</h1>
+    <form novalidate>
+        <p>
+            Vorname: <input type="text" ng-model="player.firstname" />
+        </p>
+        <p>
+            Nachname: <input type="text" ng-model="player.lastname" />
+        </p>
+        <p>
+            E-mail: <input type="email" ng-model="player.email" />
+        </p>
+        <button ng-click="save(player)">speichern</button>
+    </form>
+    <br />
+    <pre>form = {{player | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>

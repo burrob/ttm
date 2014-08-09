@@ -1,0 +1,26 @@
+@CHARSET "UTF-8";
+
+html body {
+    padding: 2em;
+}
+
+/* panels */
+.panel {
+    text-align: center;
+}
+.panel .panel-heading {
+    color: #fff;
+}
+.panel .panel-body {
+    color: #666;
+}
+.panel .panel-body h3 {
+    margin-top: 0;
+}
+.panel .panel-body h4 {
+    margin-bottom: 0;
+}
+
+.panel-anchor {
+    cursor: pointer;
+}

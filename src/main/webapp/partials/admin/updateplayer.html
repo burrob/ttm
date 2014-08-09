@@ -1,0 +1,19 @@
+<div class="container">
+    <h1>update an existing player...</h1>
+    <form novalidate>
+        <p>ID: {{player.id}}</p>
+        <p>
+            Vorname: <input type="text" ng-model="player.firstname" />
+        </p>
+        <p>
+            Nachname: <input type="text" ng-model="player.lastname" />
+        </p>
+        <p>
+            E-mail: <input type="email" ng-model="player.email" />
+        </p>
+        <button ng-click="update(player)">speichern</button>
+    </form>
+    <br />
+    <pre>form = {{player | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>
