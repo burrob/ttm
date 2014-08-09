@@ -20,9 +20,9 @@ fcoTMApp.config([ "$routeProvider", function($routeProvider) {
     /*
      * admin ui
      */
-    }).when("/admin/addplayer", {
-        templateUrl : "partials/admin/addplayer.html",
-        controller : "AddPlayerCtrl"
+    }).when("/admin/createplayer", {
+        templateUrl : "partials/admin/createplayer.html",
+        controller : "CreatePlayerCtrl"
 
     }).when("/admin/updateplayer/:playerId", {
         templateUrl : "partials/admin/updateplayer.html",

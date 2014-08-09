@@ -52,15 +52,15 @@ fcoTMControllers.controller("PlayerCtrl", [ "$scope", "$http", "$routeParams", f
  */
 
 /**
- * controller for partials/admin/addplayer.html
+ * controller for partials/admin/createplayer.html
  * 
  * create a new player
  */
-fcoTMControllers.controller("AddPlayerCtrl", [ "$scope", "$http", function($scope, $http) {
+fcoTMControllers.controller("CreatePlayerCtrl", [ "$scope", "$http", function($scope, $http) {
     $scope.master = {};
 
     $scope.save = function(player) {
-        $http.post("/data/admin/player/add", player).success(function(data) {
+        $http.post("/data/admin/player/create", player).success(function(data) {
             $scope.master = angular.copy(player);
         });
     };
