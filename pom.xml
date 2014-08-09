@@ -8,7 +8,6 @@
     <name>fco-team-manager</name>
     <description>FCO Team Manager</description>
 
-
     <properties>
         <!-- general -->
         <java.version>7</java.version>
