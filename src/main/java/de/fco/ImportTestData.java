@@ -9,8 +9,12 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 
+import de.fco.domain.Currency;
 import de.fco.domain.Player;
+import de.fco.domain.Violation;
+import de.fco.domain.ViolationCategory;
 import de.fco.service.PlayerService;
+import de.fco.service.ViolationService;
 
 /**
  * @author Ralf Hellriegel
@@ -18,32 +22,60 @@ import de.fco.service.PlayerService;
 @Component
 public class ImportTestData {
 
-	private final PlayerService playerService;
+    private final PlayerService playerService;
+    private final ViolationService violationService;
 
-	/**
-	 * @param playerService
-	 */
-	@Autowired
-	public ImportTestData(final PlayerService playerService) {
-		this.playerService = playerService;
-	}
+    /**
+     * @param playerService
+     * @param violationService
+     */
+    @Autowired
+    public ImportTestData(final PlayerService playerService, final ViolationService violationService) {
+        this.playerService = playerService;
+        this.violationService = violationService;
+    }
 
-	@PostConstruct
-	public void importData() {
-		final List<Player> players = Lists.newArrayList();
-		players.add(new Player("Ralf", "Hellriegel", "ralfhellriegel@gmx.de"));
-		players.add(new Player("Kalle", "Grabowski", "kalle@grabowski.org"));
-		players.add(new Player("Zinedine", "Zidane", "zizu@fifa.com"));
-		players.add(new Player("Lothar", "Matthäus", "loddar@bayern.by"));
-		players.add(new Player("Zlatan", "Ibrahimovic", "zlatan@psg.se"));
-		players.add(new Player("Olli", "Kahn", "der-motivator@fb.de"));
-		players.add(new Player("Mats", "Hummels", "mats@bvb.de"));
-		players.add(new Player("Franz", "Beckenbauer", "franz.der-kaiser@olympusmail.de"));
-		players.add(new Player("Roberto", "Carlos", "roberto@brasil.com"));
-		players.add(new Player("Rudi", "Völler", "kaethe@bayer.de"));
-		players.add(new Player("Vinnie", "Jones", "the-axe@psycho.uk"));
-		players.add(new Player("Paul", "Gascoine", "paul.g@gmail.com"));
-		playerService.saveAll(players);
-	}
+    @PostConstruct
+    public void importData() {
+        importPlayers();
+        importViolationCategories();
+        importViolations();
+    }
+
+    private void importPlayers() {
+        final List<Player> players = Lists.newArrayList();
+        players.add(new Player("Ralf", "Hellriegel", "ralfhellriegel@gmx.de"));
+        players.add(new Player("Kalle", "Grabowski", "kalle@grabowski.org"));
+        players.add(new Player("Zinedine", "Zidane", "zizu@fifa.com"));
+        players.add(new Player("Lothar", "Matthäus", "loddar@bayern.by"));
+        players.add(new Player("Zlatan", "Ibrahimovic", "zlatan@psg.se"));
+        players.add(new Player("Olli", "Kahn", "der-motivator@fb.de"));
+        players.add(new Player("Mats", "Hummels", "mats@bvb.de"));
+        players.add(new Player("Franz", "Beckenbauer", "franz.der-kaiser@olympusmail.de"));
+        players.add(new Player("Roberto", "Carlos", "roberto@brasil.com"));
+        players.add(new Player("Rudi", "Völler", "kaethe@bayer.de"));
+        players.add(new Player("Vinnie", "Jones", "the-axe@psycho.uk"));
+        players.add(new Player("Paul", "Gascoine", "paul.g@gmail.com"));
+        playerService.saveAll(players);
+    }
+
+    private void importViolationCategories() {
+        final List<ViolationCategory> categories = Lists.newArrayList();
+        categories.add(new ViolationCategory("Training"));
+        categories.add(new ViolationCategory("Spiel"));
+        categories.add(new ViolationCategory("Sonstiges"));
+        violationService.createCategories(categories);
+    }
+
+    private void importViolations() {
+        final List<ViolationCategory> categories = violationService.findAllCategories();
+        final List<Violation> violations = Lists.newArrayList();
+        violations.add(new Violation("Kleidung vergessen", categories.get(0), Currency.BEER, 1));
+        violations.add(new Violation("Rauchen im Trikot", categories.get(1), Currency.EURO, 5));
+        violations.add(new Violation("Bier im Trikot", categories.get(1), Currency.EURO, 5));
+        violations.add(new Violation("Gelbe Karte, Unsportlichkeit", categories.get(1), Currency.BEER_CRATE, 1));
+        violations.add(new Violation("Rote Karte, Unsportlichkeit", categories.get(1), Currency.EURO, 50));
+        violationService.createViolations(violations);
+    }
 
 }

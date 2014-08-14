@@ -6,6 +6,7 @@ package de.fco.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
 
 /**
  * @author Ralf Hellriegel
@@ -17,8 +18,13 @@ public class Player {
     @GeneratedValue
     private long id;
 
+    @NotNull
     private String firstname;
+
+    @NotNull
     private String lastname;
+
+    @NotNull
     private String email;
 
     public Player() {
@@ -94,7 +100,7 @@ public class Player {
 
     /*
      * (non-Javadoc)
-     * 
+     *
      * @see java.lang.Object#toString()
      */
     @Override
