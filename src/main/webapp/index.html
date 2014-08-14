@@ -30,12 +30,47 @@
 <script src="/js/controllers.js"></script>
 </head>
 <body>
-    <div class="container">
-        <p>
-            <a href="/">Dashboard</a> | <a href="#/players">alle Spieler</a> | <a href="#/admin/createplayer">Neuer
-                Spieler</a>
-        </p>
+
+    <!-- Fixed navbar -->
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Team Manager</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/">Dashboard</a></li>
+                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Spieler <span
+                            class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/players">Alle Spieler</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#/admin/player/create">Neuer Spieler</a></li>
+                        </ul></li>
+                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Strafen <span
+                            class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#/catalogue">Strafkatalog</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#/admin/violation/category/create">Neue Kategorie</a></li>
+                            <li><a href="#/admin/violation/create">Neue Strafe im Katalog</a></li>
+                        </ul></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
     </div>
+    
     <div ng-view></div>
+    
+    <div class="footer">
+      <div class="container">
+        <p class="text-muted">Team Manager &copy; 2014 - Ralf Hellriegel</p>
+      </div>
+    </div>
 </body>
 </html>
