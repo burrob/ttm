@@ -17,16 +17,31 @@ fcoTMApp.config([ "$routeProvider", function($routeProvider) {
         templateUrl : "partials/player.html",
         controller : "PlayerCtrl"
 
+    }).when("/catalogue", {
+        templateUrl : "partials/catalogue.html",
+        controller : "CatalogueCtrl"
+
     /*
-     * admin ui
+     * admin ui: players
      */
-    }).when("/admin/createplayer", {
+    }).when("/admin/player/create", {
         templateUrl : "partials/admin/createplayer.html",
         controller : "CreatePlayerCtrl"
 
-    }).when("/admin/updateplayer/:playerId", {
+    }).when("/admin/player/update/:playerId", {
         templateUrl : "partials/admin/updateplayer.html",
         controller : "UpdatePlayerCtrl"
+
+    /*
+     * admin ui: violations and categories
+     */
+    }).when("/admin/violation/category/create", {
+        templateUrl : "partials/admin/createcategory.html",
+        controller : "CreateViolationCategoryCtrl"
+
+    }).when("/admin/violation/create", {
+        templateUrl : "partials/admin/createviolation.html",
+        controller : "CreateViolationCtrl"
 
     /*
      * default

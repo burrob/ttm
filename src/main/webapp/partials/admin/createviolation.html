@@ -1,0 +1,42 @@
+<div class="container">
+    <h1>add a new violation...</h1>
+    <br />
+    <form class="form-horizontal" role="form" novalidate>
+        <div class="form-group">
+            <label for="inputName" class="col-sm-2 control-label">Name *</label>
+            <div class="col-sm-4">
+                <input id="inputName" class="form-control" type="text" ng-model="violation.name" placeholder="Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCategory" class="col-sm-2 control-label">Kategorie *</label>
+            <div class="col-sm-4">
+                <select id="inputCategory" class="form-control" ng-model="violation.category">
+                    <option value="" disabled selected>-- Kategorie --</option>
+                    <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAmount" class="col-sm-2 control-label">Betrag / W&auml;hrung *</label>
+            <div class="col-sm-2">
+                <input id="inputAmount" class="form-control" type="number" min="0.5" max="100" step="0.5"
+                    ng-model="violation.amount" />
+            </div>
+            <div class="col-sm-2">
+                <select id="inputCurrency" class="form-control" ng-model="violation.currency">
+                    <option value="" disabled selected>-- W&auml;hrung --</option>
+                    <option ng-repeat="currency in currencies" value="{{currency.name}}">{{currency.singular}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-default" ng-click="save(violation)">speichern</button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <pre>form = {{violation | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>

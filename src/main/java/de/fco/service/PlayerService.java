@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package de.fco.service;
 
@@ -12,18 +12,16 @@ import de.fco.domain.Player;
  */
 public interface PlayerService {
 
-	public List<Player> findAll();
+    List<Player> findAll();
 
-	public Player find(String playerId);
+    Player find(String playerId);
 
-	public Player save(Player player);
+    Player save(Player player);
 
-	public List<Player> saveAll(List<Player> players);
+    Player update(Player player);
 
-	/**
-	 * @param playerId player to delete
-	 * @return the player which was deleted
-	 */
-	public Player delete(String playerId);
+    List<Player> saveAll(List<Player> players);
+
+    Player delete(String playerId);
 
 }

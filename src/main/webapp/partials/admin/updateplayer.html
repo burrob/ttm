@@ -1,18 +1,38 @@
 <div class="container">
     <h1>update an existing player...</h1>
-    <form novalidate>
-        <p>ID: {{player.id}}</p>
-        <p>
-            Vorname: <input type="text" ng-model="player.firstname" />
-        </p>
-        <p>
-            Nachname: <input type="text" ng-model="player.lastname" />
-        </p>
-        <p>
-            E-mail: <input type="email" ng-model="player.email" />
-        </p>
-        <button ng-click="update(player)">speichern</button>
+    <br />
+    <form class="form-horizontal" role="form" novalidate>
+        <div class="form-group">
+            <label for="inputId" class="col-sm-2 control-label">ID *</label>
+            <div class="col-sm-4">
+                <input id="inputId" class="form-control" type="text" ng-model="player.id" value="{{player.id}}" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputFirstname" class="col-sm-2 control-label">Vorname *</label>
+            <div class="col-sm-4">
+                <input id="inputFirstname" class="form-control" type="text" ng-model="player.firstname" placeholder="Vorname" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputLastname" class="col-sm-2 control-label">Nachname *</label>
+            <div class="col-sm-4">
+                <input id="inputLastname" class="form-control" type="text" ng-model="player.lastname" placeholder="Nachname" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail" class="col-sm-2 control-label">E-mail *</label>
+            <div class="col-sm-4">
+                <input id="inputEmail" class="form-control" type="email" ng-model="player.email" placeholder="E-mail" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-default" ng-click="update(player)">speichern</button>
+            </div>
+        </div>
     </form>
+    
     <br />
     <pre>form = {{player | json}}</pre>
     <pre>master = {{master | json}}</pre>

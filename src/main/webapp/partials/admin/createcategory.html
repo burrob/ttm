@@ -1,0 +1,20 @@
+<div class="container">
+    <h1>add a new violation category...</h1>
+    <br />
+    <form class="form-horizontal" role="form" novalidate>
+        <div class="form-group">
+            <label for="inputCategoryName" class="col-sm-2 control-label">Name *</label>
+            <div class="col-sm-4">
+                <input id="inputCategoryName" class="form-control" type="text" ng-model="category.name" placeholder="Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-default" ng-click="save(category)">speichern</button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <pre>form = {{category | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>

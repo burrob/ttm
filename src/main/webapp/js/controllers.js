@@ -47,8 +47,17 @@ fcoTMControllers.controller("PlayerCtrl", [ "$scope", "$http", "$routeParams", f
     });
 } ]);
 
+/**
+ * controller for partials/catalogue.html
+ */
+fcoTMControllers.controller("CatalogueCtrl", [ "$scope", "$http", function($scope, $http) {
+    $http.get("/data/violation/all").success(function(data) {
+        $scope.violations = data;
+    });
+} ]);
+
 /*
- * admin ui controllers
+ * admin ui controllers : players
  */
 
 /**
@@ -61,7 +70,7 @@ fcoTMControllers.controller("CreatePlayerCtrl", [ "$scope", "$http", function($s
 
     $scope.save = function(player) {
         $http.post("/data/admin/player/create", player).success(function(data) {
-            $scope.master = angular.copy(player);
+            $scope.master = angular.copy(data);
         });
     };
 
@@ -82,8 +91,54 @@ fcoTMControllers.controller("UpdatePlayerCtrl", [ "$scope", "$http", "$routePara
 
             $scope.update = function(player) {
                 $http.put("/data/admin/player/update", player).success(function(data) {
-                    $scope.master = angular.copy(player);
+                    $scope.master = angular.copy(data);
                 });
             };
 
         } ]);
+
+/*
+ * admin ui controllers : violations & categories
+ */
+
+/**
+ * controller for partials/admin/createcategory.html
+ * 
+ * create a violation category
+ */
+fcoTMControllers.controller("CreateViolationCategoryCtrl", [ "$scope", "$http", function($scope, $http) {
+    $scope.master = {};
+
+    $scope.save = function(category) {
+        $http.post("/data/admin/violation/category/create", category).success(function(data) {
+            $scope.master = angular.copy(data);
+        });
+    };
+
+} ]);
+
+/**
+ * controller for partials/admin/createviolation.html
+ * 
+ * create a violation for the catalogue
+ */
+fcoTMControllers.controller("CreateViolationCtrl", [ "$scope", "$http", function($scope, $http) {
+    $scope.master = {};
+    $scope.categories = {};
+    $scope.currencies = {};
+
+    $http.get("/data/admin/violation/category/all").success(function(data) {
+        $scope.categories = data;
+    });
+
+    $http.get("/data/admin/violation/currency/all").success(function(data) {
+        $scope.currencies = data;
+    });
+
+    $scope.save = function(violation) {
+        $http.post("/data/admin/violation/create", violation).success(function(data) {
+            $scope.master = angular.copy(data);
+        });
+    };
+
+} ]);
