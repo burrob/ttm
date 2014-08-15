@@ -11,7 +11,6 @@
         <table class="table table-striped table-hover">
             <thead>
                 <tr>
-                    <th class="hidden-xs">#</th>
                     <th>Name</th>
                     <th class="hidden-xs">E-Mail</th>
                     <th></th>
@@ -19,21 +18,45 @@
             </thead>
             <tbody>
                 <tr ng-repeat="player in players | filter:query">
-                    <td class="hidden-xs">{{player.id}}</td>
                     <td><a href="#/players/{{player.id}}">{{player.firstname}} {{player.lastname}}</a></td>
                     <td class="hidden-xs"><a href="mailto:{{player.email}}">{{player.email}}</a></td>
 
-                    <td>
+                    <td style="width:90px;">
                         <div class="btn-group">
                             <a class="btn btn-default" href="#/players/{{player.id}}"><i class="fa fa-user fa-fw"></i></a>
                             <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href=""> <span
                                 class="fa fa-caret-down"></span></a>
-                            <ul class="dropdown-menu">
+                            <ul class="dropdown-menu dropdown-menu-right">
                                 <li><a href="#/admin/player/update/{{player.id}}"><i class="fa fa-pencil fa-fw"></i>
                                         Bearbeiten</a></li>
-                                <li><a href="" ng-click="remove(player.id)"><i class="fa fa-trash-o fa-fw"></i>
-                                        L&ouml;schen</a></li>
+                                <li><a href="" data-toggle="modal" data-target=".modal-delete-player-{{player.id}}"><i
+                                        class="fa fa-trash-o fa-fw"></i> L&ouml;schen</a></li>
                             </ul>
+                        </div>
+                        <div class="modal fade modal-delete-player-{{player.id}}" tabindex="-1" role="dialog"
+                            aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-sm">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal">
+                                            <span aria-hidden="true">&times;</span><span class="sr-only">Schlie&szlig;en</span>
+                                        </button>
+                                        <h4 class="modal-title" id="myModalLabel">L&ouml;schen best&auml;tigen</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="alert alert-warning" role="alert">
+                                            <i class="fa fa-warning"></i> Vorsicht, diese Aktion kann nicht<br />
+                                            r&uuml;ckgängig gemacht werden!
+                                        </div>
+                                        <p>{{player.firstname}} {{player.lastname}} l&ouml;schen?</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">Nein</button>
+                                        <button type="button" class="btn btn-danger" ng-click="remove(player.id);"
+                                            data-dismiss="modal">Ja</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </td>
                 </tr>

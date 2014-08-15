@@ -55,3 +55,13 @@ fcoTMApp.config([ "$routeProvider", function($routeProvider) {
     });
 
 } ]);
+
+// document ready
+$(function() {
+    // hide mobile navbar when selecting a menu item
+    $(".navbar-collapse a.navitem").on("click", function() {
+        if ($(".navbar-collapse.in").length > 0) {
+            $(".navbar-default .navbar-toggle").click();
+        }
+    });
+});

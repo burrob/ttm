@@ -33,6 +33,9 @@ fcoTMControllers.controller("PlayersCtrl", [ "$scope", "$http", function($scope,
 
         }).success(function(deletedPlayer) {
             $scope.players = _.without($scope.players, playerToRemove);
+            // $(".modal-delete-player-" + playerToRemove.id).modal("hide");
+            $(".modal-backdrop").hide();
+            return true;
         });
     };
 
