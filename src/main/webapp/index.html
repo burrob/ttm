@@ -44,34 +44,32 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li class="active"><a href="/">Dashboard</a></li>
-                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Spieler <span
+                    <li><a href="#/players">Alle Spieler</a></li>
+                    <li><a href="#/catalogue">Strafkatalog</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Neu <span
                             class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#/players">Alle Spieler</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#/admin/player/create">Neuer Spieler</a></li>
-                        </ul></li>
-                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Strafen <span
-                            class="caret"></span></a>
-                        <ul class="dropdown-menu" role="menu">
-                            <li><a href="#/catalogue">Strafkatalog</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#/admin/violation/create">Neue Strafe im Katalog</a></li>
-                            <li><a href="#/admin/violation/category/create">Neue Kategorie</a></li>
-                            <li><a href="#/admin/violation/currency/create">Neue W&auml;hrung</a></li>
+                            <li><a href="#/admin/player/create"><i class="fa fa-user fa-fw"></i> Spieler</a></li>
+                            <li><a href="#/admin/violation/create"><i class="fa fa-gavel fa-fw"></i> Strafe</a></li>
+                            <li><a href="#/admin/violation/category/create"><i class="fa fa-leaf fa-fw"></i>
+                                    Kategorie</a></li>
+                            <li><a href="#/admin/violation/currency/create"><i class="fa fa-eur fa-fw"></i>
+                                    W&auml;hrung</a></li>
                         </ul></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
         </div>
     </div>
-    
+
     <div ng-view></div>
-    
+
     <div class="footer">
-      <div class="container">
-        <p class="text-muted">Team Manager &copy; 2014 - Ralf Hellriegel</p>
-      </div>
+        <div class="container">
+            <p class="text-muted">Team Manager &copy; 2014 - Ralf Hellriegel</p>
+        </div>
     </div>
 </body>
 </html>

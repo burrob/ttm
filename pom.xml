@@ -29,7 +29,7 @@
         <slf4j.version>1.7.7</slf4j.version>
 
         <!-- tools -->
-        <jetty.version>9.2.1.v20140609</jetty.version>
+        <jetty.version>9.2.2.v20140723</jetty.version>
         <commons-lang3.version>3.3.2</commons-lang3.version>
         <guava.version>17.0</guava.version>
         <jodatime.version>2.3</jodatime.version>
@@ -56,7 +56,6 @@
                     <webApp>
                         <contextPath>/</contextPath>
                     </webApp>
-                    <!-- <scanIntervalSeconds>3</scanIntervalSeconds> -->
                 </configuration>
             </plugin>
         </plugins>
