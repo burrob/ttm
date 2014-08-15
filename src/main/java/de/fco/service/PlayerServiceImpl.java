@@ -46,6 +46,16 @@ public class PlayerServiceImpl implements PlayerService {
     /*
      * (non-Javadoc)
      * 
+     * @see de.fco.service.PlayerService#findAllOrderByFirstname()
+     */
+    @Override
+    public List<Player> findAllOrderByFirstname() {
+        return (List<Player>) playerRepository.findAllOrderByFirstname();
+    }
+
+    /*
+     * (non-Javadoc)
+     * 
      * @see de.fco.service.PlayerService#find(long)
      */
     @Override

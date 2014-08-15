@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package de.fco.web;
 
@@ -22,31 +22,31 @@ import de.fco.service.PlayerService;
 @RequestMapping(value = "/player")
 public class PlayerController {
 
-	private final PlayerService playerService;
+    private final PlayerService playerService;
 
-	/**
-	 * @param playerService
-	 */
-	@Autowired
-	public PlayerController(final PlayerService playerService) {
-		this.playerService = playerService;
-	}
+    /**
+     * @param playerService
+     */
+    @Autowired
+    public PlayerController(final PlayerService playerService) {
+        this.playerService = playerService;
+    }
 
-	/**
-	 * @return all existing players
-	 */
-	@RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Player> getAllPlayers() {
-		return playerService.findAll();
-	}
+    /**
+     * @return all existing players
+     */
+    @RequestMapping(value = "/all", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Player> getAllPlayers() {
+        return playerService.findAllOrderByFirstname();
+    }
 
-	/**
-	 * @param playerId
-	 * @return
-	 */
-	@RequestMapping(value = "/{playerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-	public Player getPlayer(@PathVariable final String playerId) {
-		return playerService.find(playerId);
-	}
+    /**
+     * @param playerId
+     * @return
+     */
+    @RequestMapping(value = "/{playerId}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    public Player getPlayer(@PathVariable final String playerId) {
+        return playerService.find(playerId);
+    }
 
 }

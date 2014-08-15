@@ -14,6 +14,8 @@ public interface PlayerService {
 
     List<Player> findAll();
 
+    List<Player> findAllOrderByFirstname();
+
     Player find(String playerId);
 
     Player save(Player player);
