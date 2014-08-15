@@ -39,6 +39,10 @@ fcoTMApp.config([ "$routeProvider", function($routeProvider) {
         templateUrl : "partials/admin/createcategory.html",
         controller : "CreateViolationCategoryCtrl"
 
+    }).when("/admin/violation/currency/create", {
+        templateUrl : "partials/admin/createcurrency.html",
+        controller : "CreateCurrencyCtrl"
+
     }).when("/admin/violation/create", {
         templateUrl : "partials/admin/createviolation.html",
         controller : "CreateViolationCtrl"

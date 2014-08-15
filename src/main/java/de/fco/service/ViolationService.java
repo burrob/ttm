@@ -2,6 +2,7 @@ package de.fco.service;
 
 import java.util.List;
 
+import de.fco.domain.Currency;
 import de.fco.domain.Violation;
 import de.fco.domain.ViolationCategory;
 
@@ -14,7 +15,11 @@ public interface ViolationService {
 
     List<ViolationCategory> findAllCategories();
 
+    List<Currency> findAllCurrencies();
+
     ViolationCategory findCategoryById(Long id);
+
+    Currency findCurrencyById(Long id);
 
     ViolationCategory createCategory(ViolationCategory category);
 
@@ -23,5 +28,9 @@ public interface ViolationService {
     Violation createViolation(Violation violation);
 
     List<Violation> createViolations(List<Violation> violation);
+
+    Currency createCurrency(Currency currency);
+
+    List<Currency> createCurrencies(List<Currency> currencies);
 
 }

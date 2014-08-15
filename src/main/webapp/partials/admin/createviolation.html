@@ -11,7 +11,7 @@
         <div class="form-group">
             <label for="inputCategory" class="col-sm-2 control-label">Kategorie *</label>
             <div class="col-sm-4">
-                <select id="inputCategory" class="form-control" ng-model="violation.category">
+                <select id="inputCategory" class="form-control" ng-model="violation.category.id">
                     <option value="" disabled selected>-- Kategorie --</option>
                     <option ng-repeat="category in categories" value="{{category.id}}">{{category.name}}</option>
                 </select>
@@ -24,9 +24,9 @@
                     ng-model="violation.amount" />
             </div>
             <div class="col-sm-2">
-                <select id="inputCurrency" class="form-control" ng-model="violation.currency">
+                <select id="inputCurrency" class="form-control" ng-model="violation.currency.id">
                     <option value="" disabled selected>-- W&auml;hrung --</option>
-                    <option ng-repeat="currency in currencies" value="{{currency.name}}">{{currency.singular}}</option>
+                    <option ng-repeat="currency in currencies" value="{{currency.id}}">{{currency.name}}</option>
                 </select>
             </div>
         </div>

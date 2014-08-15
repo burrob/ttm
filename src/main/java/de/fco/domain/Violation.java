@@ -4,8 +4,6 @@
 package de.fco.domain;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -21,18 +19,16 @@ public class Violation {
     @GeneratedValue
     private long id;
 
-    @ManyToOne(optional = false)
-    @NotNull
-    private ViolationCategory category;
-
     @NotNull
     private String name;
 
     @NotNull
     private double amount;
 
-    @Enumerated(EnumType.STRING)
-    @NotNull
+    @ManyToOne(optional = false)
+    private ViolationCategory category;
+
+    @ManyToOne(optional = false)
     private Currency currency;
 
     public Violation() {

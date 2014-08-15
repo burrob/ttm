@@ -1,0 +1,32 @@
+<div class="container">
+    <h1>add a new currency ...</h1>
+    <br />
+    <form class="form-horizontal" role="form" novalidate>
+        <div class="form-group">
+            <label for="inputCurrencyCode" class="col-sm-2 control-label">Code *</label>
+            <div class="col-sm-4">
+                <input id="inputCurrencyCode" class="form-control" type="text" ng-model="currency.code" placeholder="Code" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCurrencyName" class="col-sm-2 control-label">Name *</label>
+            <div class="col-sm-4">
+                <input id="inputCurrencyName" class="form-control" type="text" ng-model="currency.name" placeholder="Name" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputCurrencyPlural" class="col-sm-2 control-label">Plural *</label>
+            <div class="col-sm-4">
+                <input id="inputCurrencyPlural" class="form-control" type="text" ng-model="currency.plural" placeholder="Plural" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-default" ng-click="save(currency)">speichern</button>
+            </div>
+        </div>
+    </form>
+    <br />
+    <pre>form = {{currency | json}}</pre>
+    <pre>master = {{master | json}}</pre>
+</div>

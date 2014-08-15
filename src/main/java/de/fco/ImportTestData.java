@@ -38,6 +38,7 @@ public class ImportTestData {
     @PostConstruct
     public void importData() {
         importPlayers();
+        importCurrencies();
         importViolationCategories();
         importViolations();
     }
@@ -59,6 +60,14 @@ public class ImportTestData {
         playerService.saveAll(players);
     }
 
+    private void importCurrencies() {
+        final List<Currency> currencies = Lists.newArrayList();
+        currencies.add(new Currency("€", "Euro", "Euro"));
+        currencies.add(new Currency("B", "Bier", "Bier"));
+        currencies.add(new Currency("BK", "Kiste Bier", "Kisten Bier"));
+        violationService.createCurrencies(currencies);
+    }
+
     private void importViolationCategories() {
         final List<ViolationCategory> categories = Lists.newArrayList();
         categories.add(new ViolationCategory("Training"));
@@ -69,13 +78,14 @@ public class ImportTestData {
 
     private void importViolations() {
         final List<ViolationCategory> categories = violationService.findAllCategories();
+        final List<Currency> currencies = violationService.findAllCurrencies();
+
         final List<Violation> violations = Lists.newArrayList();
-        violations.add(new Violation("Kleidung vergessen", categories.get(0), Currency.BEER, 1));
-        violations.add(new Violation("Rauchen im Trikot", categories.get(1), Currency.EURO, 5));
-        violations.add(new Violation("Bier im Trikot", categories.get(1), Currency.EURO, 5));
-        violations.add(new Violation("Gelbe Karte, Unsportlichkeit", categories.get(1), Currency.BEER_CRATE, 1));
-        violations.add(new Violation("Rote Karte, Unsportlichkeit", categories.get(1), Currency.EURO, 50));
+        violations.add(new Violation("Kleidung vergessen", categories.get(0), currencies.get(1), 1));
+        violations.add(new Violation("Rauchen im Trikot", categories.get(1), currencies.get(0), 5));
+        violations.add(new Violation("Bier im Trikot", categories.get(1), currencies.get(0), 5));
+        violations.add(new Violation("Gelbe Karte, Unsportlichkeit", categories.get(1), currencies.get(2), 1));
+        violations.add(new Violation("Rote Karte, Unsportlichkeit", categories.get(1), currencies.get(0), 50));
         violationService.createViolations(violations);
     }
-
 }

@@ -118,6 +118,22 @@ fcoTMControllers.controller("CreateViolationCategoryCtrl", [ "$scope", "$http", 
 } ]);
 
 /**
+ * controller for partials/admin/createcurrency.html
+ * 
+ * create a currency
+ */
+fcoTMControllers.controller("CreateCurrencyCtrl", [ "$scope", "$http", function($scope, $http) {
+    $scope.master = {};
+
+    $scope.save = function(currency) {
+        $http.post("/data/admin/violation/currency/create", currency).success(function(data) {
+            $scope.master = angular.copy(data);
+        });
+    };
+
+} ]);
+
+/**
  * controller for partials/admin/createviolation.html
  * 
  * create a violation for the catalogue

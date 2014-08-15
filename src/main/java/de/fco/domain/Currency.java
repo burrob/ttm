@@ -3,42 +3,87 @@
  */
 package de.fco.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 /**
  * @author Ralf Hellriegel
  */
-public enum Currency {
+@Entity
+public class Currency {
 
-    EURO("€", "Euro", "Euro"), //
-    BEER("B", "Bier", "Bier"), //
-    BEER_CRATE("BK", "Kiste Bier", "Kisten Bier");
+    @Id
+    @GeneratedValue
+    private long id;
 
-    private final String symbol;
-    private final String singular;
-    private final String plural;
+    @NotNull
+    @Size(min = 1, max = 3)
+    private String code;
+
+    @NotNull
+    private String name;
+
+    @NotNull
+    private String plural;
+
+    public Currency() {
+        // NOP
+    }
 
     /**
-     * @param symbol
-     * @param singular
+     * @param code
+     * @param name
      * @param plural
      */
-    private Currency(final String symbol, final String singular, final String plural) {
-        this.symbol = symbol;
-        this.singular = singular;
+    public Currency(final String code, final String name, final String plural) {
+        this.code = code;
+        this.name = name;
         this.plural = plural;
     }
 
     /**
-     * @return the symbol
+     * @return the id
      */
-    public String getSymbol() {
-        return symbol;
+    public long getId() {
+        return id;
     }
 
     /**
-     * @return the singular
+     * @param id the id to set
      */
-    public String getSingular() {
-        return singular;
+    public void setId(final long id) {
+        this.id = id;
+    }
+
+    /**
+     * @return the code
+     */
+    public String getCode() {
+        return code;
+    }
+
+    /**
+     * @param code the code to set
+     */
+    public void setCode(final String code) {
+        this.code = code;
+    }
+
+    /**
+     * @return the name
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * @param name the name to set
+     */
+    public void setName(final String name) {
+        this.name = name;
     }
 
     /**
@@ -46,6 +91,23 @@ public enum Currency {
      */
     public String getPlural() {
         return plural;
+    }
+
+    /**
+     * @param plural the plural to set
+     */
+    public void setPlural(final String plural) {
+        this.plural = plural;
+    }
+
+    /*
+     * (non-Javadoc)
+     *
+     * @see java.lang.Object#toString()
+     */
+    @Override
+    public String toString() {
+        return String.format("Currency [id=%s, code=%s, name=%s, plural=%s]", id, code, name, plural);
     }
 
 }
