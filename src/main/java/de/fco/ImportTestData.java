@@ -81,11 +81,13 @@ public class ImportTestData {
         final List<Currency> currencies = violationService.findAllCurrencies();
 
         final List<Violation> violations = Lists.newArrayList();
-        violations.add(new Violation("Kleidung vergessen", categories.get(0), currencies.get(1), 1));
         violations.add(new Violation("Rauchen im Trikot", categories.get(1), currencies.get(0), 5));
         violations.add(new Violation("Bier im Trikot", categories.get(1), currencies.get(0), 5));
+        violations.add(new Violation("Kleidung vergessen", categories.get(0), currencies.get(1), 1));
         violations.add(new Violation("Gelbe Karte, Unsportlichkeit", categories.get(1), currencies.get(2), 1));
         violations.add(new Violation("Rote Karte, Unsportlichkeit", categories.get(1), currencies.get(0), 50));
+        violations.add(new Violation("Zu Spät", categories.get(0), currencies.get(0), 2));
         violationService.createViolations(violations);
     }
+
 }

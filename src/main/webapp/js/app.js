@@ -64,4 +64,6 @@ $(function() {
             $(".navbar-default .navbar-toggle").click();
         }
     });
+
+    $("#gmatt").tooltip();
 });

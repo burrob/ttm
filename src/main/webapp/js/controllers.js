@@ -33,9 +33,7 @@ fcoTMControllers.controller("PlayersCtrl", [ "$scope", "$http", function($scope,
 
         }).success(function(deletedPlayer) {
             $scope.players = _.without($scope.players, playerToRemove);
-            // $(".modal-delete-player-" + playerToRemove.id).modal("hide");
             $(".modal-backdrop").hide();
-            return true;
         });
     };
 
@@ -55,7 +53,7 @@ fcoTMControllers.controller("PlayerCtrl", [ "$scope", "$http", "$routeParams", f
  */
 fcoTMControllers.controller("CatalogueCtrl", [ "$scope", "$http", function($scope, $http) {
     $http.get("/data/violation/all").success(function(data) {
-        $scope.violations = data;
+        $scope.catalogue = data;
     });
 } ]);
 

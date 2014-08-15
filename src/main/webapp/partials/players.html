@@ -18,7 +18,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="player in players | filter:query">
-                    <td><a href="#/players/{{player.id}}">{{player.firstname}} {{player.lastname}}</a></td>
+                    <td><a href="#/players/{{player.id}}"><strong>{{player.firstname}} {{player.lastname}}</strong></a></td>
                     <td class="hidden-xs"><a href="mailto:{{player.email}}">{{player.email}}</a></td>
 
                     <td style="width:90px;">
@@ -51,9 +51,9 @@
                                         <p>{{player.firstname}} {{player.lastname}} l&ouml;schen?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">Nein</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">blo&szlig; nicht</button>
                                         <button type="button" class="btn btn-danger" ng-click="remove(player.id);"
-                                            data-dismiss="modal">Ja</button>
+                                            data-dismiss="modal">Ja, wirklich!</button>
                                     </div>
                                 </div>
                             </div>

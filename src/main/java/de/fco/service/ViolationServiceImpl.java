@@ -57,6 +57,16 @@ public class ViolationServiceImpl implements ViolationService {
     /*
      * (non-Javadoc)
      *
+     * @see de.fco.service.ViolationService#findAllViolationsOrderByCategory()
+     */
+    @Override
+    public List<Violation> findAllViolationsOrderByCategory() {
+        return (List<Violation>) violationRepository.findAllOrderByCategory();
+    }
+
+    /*
+     * (non-Javadoc)
+     *
      * @see de.fco.service.ViolationService#findAllCategories()
      */
     @Override

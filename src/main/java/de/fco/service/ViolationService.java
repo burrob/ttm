@@ -17,6 +17,8 @@ public interface ViolationService {
 
     List<Currency> findAllCurrencies();
 
+    List<Violation> findAllViolationsOrderByCategory();
+
     ViolationCategory findCategoryById(Long id);
 
     Currency findCurrencyById(Long id);
