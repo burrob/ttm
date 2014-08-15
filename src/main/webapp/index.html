@@ -31,8 +31,12 @@
 </head>
 <body>
 
+    <script type="text/javascript">
+                    console.log(fcoTMApp);
+                </script>
+
     <!-- Fixed navbar -->
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="NavbarController">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -43,22 +47,29 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a class="navitem" href="/">Dashboard</a></li>
-                    <li><a class="navitem" href="#/players">Alle Spieler</a></li>
-                    <li><a class="navitem" href="#/catalogue">Strafkatalog</a></li>
+                    <li ng-class="{ active: isActive('/dashboard')}"><a class="navitem" href="/"><i
+                            class="fa fa-tachometer fa-fw"></i> Dashboard</a></li>
+                    <li ng-class="{ active: isActive('/players')}"><a class="navitem" href="#/players"><i
+                            class="fa fa-users fa-fw"></i> Alle Spieler</a></li>
+                    <li ng-class="{ active: isActive('/catalogue')}"><a class="navitem" href="#/catalogue"><i
+                            class="fa fa-book fa-fw"></i> Strafkatalog</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="dropdown"><a href="" class="dropdown-toggle" data-toggle="dropdown">Neu <span
-                            class="caret"></span></a>
+                    <li class="dropdown"
+                        ng-class="{ active: isActive('/admin/player/create') || isActive('/admin/violation/create') || isActive('/admin/violation/category/create') || isActive('/admin/violation/currency/create')}"><a
+                        href="" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-plus fa-fw"></i> Neu
+                            <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a class="navitem" href="#/admin/player/create"><i class="fa fa-user fa-fw"></i>
-                                    Spieler</a></li>
-                            <li><a class="navitem" href="#/admin/violation/create"><i class="fa fa-gavel fa-fw"></i>
-                                    Strafe</a></li>
-                            <li><a class="navitem" href="#/admin/violation/category/create"><i
-                                    class="fa fa-leaf fa-fw"></i> Kategorie</a></li>
-                            <li><a class="navitem" href="#/admin/violation/currency/create"><i
-                                    class="fa fa-eur fa-fw"></i> W&auml;hrung</a></li>
+                            <li ng-class="{ active: isActive('/admin/player/create')}"><a class="navitem"
+                                href="#/admin/player/create"><i class="fa fa-user fa-fw"></i> Spieler</a></li>
+                            <li ng-class="{ active: isActive('/admin/violation/create')}"><a class="navitem"
+                                href="#/admin/violation/create"><i class="fa fa-gavel fa-fw"></i> Strafe</a></li>
+                            <li ng-class="{ active: isActive('/admin/violation/category/create')}"><a
+                                class="navitem" href="#/admin/violation/category/create"><i class="fa fa-leaf fa-fw"></i>
+                                    Kategorie</a></li>
+                            <li ng-class="{ active: isActive('/admin/violation/currency/create')}"><a
+                                class="navitem" href="#/admin/violation/currency/create"><i class="fa fa-eur fa-fw"></i>
+                                    W&auml;hrung</a></li>
                         </ul></li>
                 </ul>
             </div>

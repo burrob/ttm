@@ -1,32 +1,52 @@
 <div class="container">
-    <h1>add a new player...</h1>
+    <h2>Neuer Spieler</h2>
     <br />
-    <form class="form-horizontal" role="form" novalidate>
+    <form class="form-horizontal" role="form">
         <div class="form-group">
             <label for="inputFirstname" class="col-sm-2 control-label">Vorname *</label>
-            <div class="col-sm-4">
-                <input id="inputFirstname" class="form-control" type="text" ng-model="player.firstname" placeholder="Vorname" />
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span> <input id="inputFirstname"
+                    class="form-control" type="text" ng-model="player.firstname" placeholder="Vorname" required />
             </div>
         </div>
         <div class="form-group">
             <label for="inputLastname" class="col-sm-2 control-label">Nachname *</label>
-            <div class="col-sm-4">
-                <input id="inputLastname" class="form-control" type="text" ng-model="player.lastname" placeholder="Nachname" />
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span> <input id="inputLastname"
+                    class="form-control" type="text" ng-model="player.lastname" placeholder="Nachname" required />
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">E-mail *</label>
-            <div class="col-sm-4">
-                <input id="inputEmail" class="form-control" type="email" ng-model="player.email" placeholder="E-mail" />
+            <div class="input-group col-sm-4">
+                <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span> <input id="inputEmail"
+                    class="form-control" type="email" ng-model="player.email" placeholder="E-mail" required />
             </div>
         </div>
         <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-4">
-                <button type="submit" class="btn btn-default" ng-click="save(player)">speichern</button>
+            <div class="input-group btn-group col-sm-offset-2 col-sm-4">
+                <button type="submit" class="btn btn-primary" ng-click="save(player, true)">
+                    <i class="fa fa-floppy-o fw"></i> Speichern
+                </button>
+                <button type="submit" class="btn btn-info" ng-click="save(player, false)">
+                    Speichern &amp; noch einen <i class="fa fa-files-o"></i>
+                </button>
             </div>
         </div>
     </form>
-    <br />
-    <pre>form = {{player | json}}</pre>
-    <pre>master = {{master | json}}</pre>
+
+    <div ng-if="error" class="panel panel-danger">
+        <div class="panel-heading">Whoopsie!</div>
+        <div class="panel-body">
+            <p>Irgendwas ging schief, bitte &uuml;berpr&uuml;fe deine Eingaben (Pflichtfelder, E-mail Adresse schon
+                vergeben, ...).</p>
+            <p>Hilft das nichts, bitte folgende Daten an Ralf schicken:</p>
+            <ul>
+                <li>Datum &amp; Uhrzeit des Fehlers</li>
+                <li>Den gesamten Stacktrace unten</li>
+                <li>Screenshot der Eingabemaske oben</li>
+            </ul>
+            <pre>{{error}}</pre>
+        </div>
+    </div>
 </div>

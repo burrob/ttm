@@ -26,28 +26,38 @@ html body {
     padding: 70px 0;
 }
 
-/* panels
+/* error handling
 -------------------------------------------------- */
-.panel {
+.panel-danger pre {
+    font-size: 0.8em;
+}
+
+input.ng-invalid.ng-dirty {
+    background-color: #f2dede;
+}
+
+/* dashboard panels
+-------------------------------------------------- */
+#dashboard .panel {
     text-align: center;
 }
 
-.panel .panel-heading {
+#dashboard .panel .panel-heading {
     color: #fff;
 }
 
-.panel .panel-body {
+#dashboard .panel .panel-body {
     color: #666;
 }
 
-.panel .panel-body h3 {
+#dashboard .panel .panel-body h3 {
     margin-top: 0;
 }
 
-.panel .panel-body h4 {
+#dashboard .panel .panel-body h4 {
     margin-bottom: 0;
 }
 
-.panel-anchor {
+#dashboard .panel-anchor {
     cursor: pointer;
 }

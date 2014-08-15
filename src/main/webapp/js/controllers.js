@@ -4,6 +4,12 @@ var fcoTMControllers = angular.module("fcoTMControllers", []);
  * user ui controllers
  */
 
+function NavbarController($scope, $location) {
+    $scope.isActive = function(viewLocation) {
+        return viewLocation === $location.path();
+    };
+}
+
 /**
  * controller for partials/dashboard.html
  */
@@ -69,9 +75,16 @@ fcoTMControllers.controller("CatalogueCtrl", [ "$scope", "$http", function($scop
 fcoTMControllers.controller("CreatePlayerCtrl", [ "$scope", "$http", function($scope, $http) {
     $scope.master = {};
 
-    $scope.save = function(player) {
+    $scope.save = function(player, isHistoryBack) {
         $http.post("/data/admin/player/create", player).success(function(data) {
+            $scope.error = null;
             $scope.master = angular.copy(data);
+            if (isHistoryBack) {
+                history.back();
+            }
+
+        }).error(function(data, status, headers, config) {
+            $scope.error = data;
         });
     };
 

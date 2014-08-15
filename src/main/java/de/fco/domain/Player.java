@@ -6,25 +6,29 @@ package de.fco.domain;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.validation.constraints.NotNull;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.validator.constraints.NotBlank;
 
 /**
  * @author Ralf Hellriegel
  */
 @Entity
+@Table(uniqueConstraints = @UniqueConstraint(columnNames = { "email" }))
 public class Player {
 
     @Id
     @GeneratedValue
     private long id;
 
-    @NotNull
+    @NotBlank
     private String firstname;
 
-    @NotNull
+    @NotBlank
     private String lastname;
 
-    @NotNull
+    @NotBlank
     private String email;
 
     public Player() {

@@ -3,8 +3,12 @@
  */
 package de.fco.web.admin;
 
+import org.apache.commons.lang3.exception.ExceptionUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +25,8 @@ import de.fco.service.PlayerService;
 @RestController
 @RequestMapping(value = "/admin/player")
 public class PlayerManagementController {
+
+    private final Logger log = LoggerFactory.getLogger(PlayerManagementController.class);
 
     private final PlayerService playerService;
 
@@ -64,6 +70,12 @@ public class PlayerManagementController {
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public Player updatePlayer(@RequestBody final Player player) {
         return playerService.update(player);
+    }
+
+    @ExceptionHandler(value = Exception.class)
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST)
+    public String foo(final Exception e) {
+        return ExceptionUtils.getStackTrace(e);
     }
 
 }
