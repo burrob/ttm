@@ -79,6 +79,8 @@ fcoTMControllers.controller("CreatePlayerCtrl", [ "$scope", "$http", function($s
         $http.post("/data/admin/player/create", player).success(function(data) {
             $scope.error = null;
             $scope.master = angular.copy(data);
+            $scope.player = {};
+
             if (isHistoryBack) {
                 history.back();
             }

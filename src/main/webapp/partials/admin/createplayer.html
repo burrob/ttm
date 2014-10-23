@@ -6,29 +6,29 @@
             <label for="inputFirstname" class="col-sm-2 control-label">Vorname *</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span> <input id="inputFirstname"
-                    class="form-control" type="text" ng-model="player.firstname" placeholder="Vorname" required />
+                    class="form-control" type="text" ng-model="player.firstname" placeholder="Vorname" tabindex="1" required />
             </div>
         </div>
         <div class="form-group">
             <label for="inputLastname" class="col-sm-2 control-label">Nachname *</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span> <input id="inputLastname"
-                    class="form-control" type="text" ng-model="player.lastname" placeholder="Nachname" required />
+                    class="form-control" type="text" ng-model="player.lastname" placeholder="Nachname" tabindex="2" required />
             </div>
         </div>
         <div class="form-group">
             <label for="inputEmail" class="col-sm-2 control-label">E-mail *</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span> <input id="inputEmail"
-                    class="form-control" type="email" ng-model="player.email" placeholder="E-mail" required />
+                    class="form-control" type="email" ng-model="player.email" placeholder="E-mail" tabindex="3" required />
             </div>
         </div>
         <div class="form-group">
             <div class="input-group btn-group col-sm-offset-2 col-sm-4">
-                <button type="submit" class="btn btn-primary" ng-click="save(player, true)">
+                <button type="submit" class="btn btn-primary" ng-click="save(player, true)" tabindex="4">
                     <i class="fa fa-floppy-o fw"></i> Speichern
                 </button>
-                <button type="submit" class="btn btn-info" ng-click="save(player, false)">
+                <button type="submit" class="btn btn-info" ng-click="save(player, false)" tabindex="5">
                     Speichern &amp; noch einen <i class="fa fa-files-o"></i>
                 </button>
             </div>
