@@ -29,6 +29,8 @@ fcoTMControllers.controller("PlayersCtrl", [ "$scope", "$http", function($scope,
      * delete an existing player
      */
     $scope.remove = function(playerIdToRemove) {
+        $scope.success = null;
+
         var playerToRemove = _.find($scope.players, function(player) {
             return player.id == playerIdToRemove;
         });
@@ -40,6 +42,8 @@ fcoTMControllers.controller("PlayersCtrl", [ "$scope", "$http", function($scope,
         }).success(function(deletedPlayer) {
             $scope.players = _.without($scope.players, playerToRemove);
             $(".modal-backdrop").hide();
+
+            $scope.success = deletedPlayer.firstname + " " + deletedPlayer.lastname + " erfolgreich gelöscht";
         });
     };
 

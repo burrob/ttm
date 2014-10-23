@@ -7,6 +7,10 @@
     </div>
     <br />
 
+    <div ng-if="success" class="panel panel-success">
+        <div class="panel-body bg-success"><i class="fa fa-trash-o"></i> {{success}}</div>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-striped table-hover">
             <thead>
@@ -18,10 +22,11 @@
             </thead>
             <tbody>
                 <tr ng-repeat="player in players | filter:query">
-                    <td><a href="#/players/{{player.id}}"><strong>{{player.firstname}} {{player.lastname}}</strong></a></td>
+                    <td><a href="#/players/{{player.id}}"><strong>{{player.firstname}}
+                                {{player.lastname}}</strong></a></td>
                     <td class="hidden-xs"><a href="mailto:{{player.email}}">{{player.email}}</a></td>
 
-                    <td style="width:90px;">
+                    <td style="width: 90px;">
                         <div class="btn-group">
                             <a class="btn btn-default" href="#/players/{{player.id}}"><i class="fa fa-user fa-fw"></i></a>
                             <a class="btn btn-default dropdown-toggle" data-toggle="dropdown" href=""> <span
@@ -51,7 +56,8 @@
                                         <p>{{player.firstname}} {{player.lastname}} l&ouml;schen?</p>
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-default" data-dismiss="modal">blo&szlig; nicht</button>
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">blo&szlig;
+                                            nicht</button>
                                         <button type="button" class="btn btn-danger" ng-click="remove(player.id);"
                                             data-dismiss="modal">Ja, wirklich!</button>
                                     </div>
