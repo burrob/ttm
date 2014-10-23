@@ -5,7 +5,6 @@ package de.fco.service;
 
 import java.util.List;
 
-import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +14,6 @@ import com.google.common.primitives.Longs;
 
 import de.fco.domain.Player;
 import de.fco.repository.PlayerRepository;
-import de.fco.service.exception.NotBlankConstaintException;
 import de.fco.service.exception.ServiceException;
 import de.fco.service.exception.UniqueConstraintException;
 
@@ -78,10 +76,7 @@ public class PlayerServiceImpl implements PlayerService {
      */
     @Override
     public Player save(final Player player) throws ServiceException {
-        if (StringUtils.isBlank(player.getEmail())) {
-            throw new NotBlankConstaintException("email must not be null");
-
-        } else if (playerRepository.findByEmail(player.getEmail()) != null) {
+        if (playerRepository.findByEmail(player.getEmail()) != null) {
             throw new UniqueConstraintException("email already exists");
         }
 
@@ -109,9 +104,15 @@ public class PlayerServiceImpl implements PlayerService {
      */
     @Override
     public Player update(final Player player) throws ServiceException {
-        final Player oldPlayerData = find(String.valueOf(player.getId()));
-        log.info("update " + oldPlayerData);
-        return save(player);
+        Player playerToUpdate = find(String.valueOf(player.getId()));
+
+        if (playerToUpdate != null) {
+            log.info("update  " + playerToUpdate);
+            playerToUpdate = playerRepository.save(player);
+        }
+
+        log.info("updated " + playerToUpdate);
+        return playerToUpdate;
     }
 
     /*
