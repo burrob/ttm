@@ -22,7 +22,7 @@ public class AllExceptionsHandlingController {
      */
     @ExceptionHandler(value = Exception.class)
     @ResponseStatus(value = HttpStatus.BAD_REQUEST)
-    public String foo(final Exception e) {
+    public String handleAllUnknownExceptions(final Exception e) {
         return ExceptionUtils.getStackTrace(e);
     }
 

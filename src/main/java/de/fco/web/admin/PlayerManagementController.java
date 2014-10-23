@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import de.fco.domain.Player;
 import de.fco.service.PlayerService;
+import de.fco.service.exception.ServiceException;
 import de.fco.web.AllExceptionsHandlingController;
 
 /**
@@ -38,10 +39,11 @@ public class PlayerManagementController extends AllExceptionsHandlingController 
      *
      * @param player the new object to create in the database
      * @return the player which was actually created
+     * @throws ServiceException
      */
     @RequestMapping(value = "/create", method = RequestMethod.POST)
     @ResponseStatus(value = HttpStatus.CREATED)
-    public Player createPlayer(@RequestBody final Player player) {
+    public Player createPlayer(@RequestBody final Player player) throws ServiceException {
         return playerService.save(player);
     }
 
@@ -61,9 +63,10 @@ public class PlayerManagementController extends AllExceptionsHandlingController 
      *
      * @param player the object to update in the database
      * @return the updated player
+     * @throws ServiceException
      */
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public Player updatePlayer(@RequestBody final Player player) {
+    public Player updatePlayer(@RequestBody final Player player) throws ServiceException {
         return playerService.update(player);
     }
 

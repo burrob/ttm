@@ -1,34 +1,58 @@
 <div class="container">
     <h2>Neuer Spieler</h2>
     <br />
-    <form class="form-horizontal" role="form">
+    <form name="createPlayerForm" class="form-horizontal" role="form" novalidate>
         <div class="form-group">
             <label for="inputFirstname" class="col-sm-2 control-label">Vorname *</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span> <input id="inputFirstname"
-                    class="form-control" type="text" ng-model="player.firstname" placeholder="Vorname" tabindex="1" required />
+                    name="inputFirstname" class="form-control" type="text" ng-model="player.firstname"
+                    placeholder="Vorname" tabindex="1" required />
+            </div>
+            <div ng-show="createPlayerForm.inputFirstname.$dirty && createPlayerForm.inputFirstname.$invalid">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4 input-error-message text-warning">
+                    <span ng-show="createPlayerForm.inputFirstname.$error.required">Bitte Vorname eingeben</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <label for="inputLastname" class="col-sm-2 control-label">Nachname *</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon"><i class="fa fa-user fa-fw"></i></span> <input id="inputLastname"
-                    class="form-control" type="text" ng-model="player.lastname" placeholder="Nachname" tabindex="2" required />
+                    name="inputLastname" class="form-control" type="text" ng-model="player.lastname"
+                    placeholder="Nachname" tabindex="2" required />
+            </div>
+            <div ng-show="createPlayerForm.inputLastname.$dirty && createPlayerForm.inputLastname.$invalid">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4 input-error-message text-warning">
+                    <span ng-show="createPlayerForm.inputLastname.$error.required">Bitte Nachname eingeben</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
-            <label for="inputEmail" class="col-sm-2 control-label">E-mail *</label>
+            <label for="inputEmail" class="col-sm-2 control-label">E-Mail *</label>
             <div class="input-group col-sm-4">
                 <span class="input-group-addon"><i class="fa fa-envelope fa-fw"></i></span> <input id="inputEmail"
-                    class="form-control" type="email" ng-model="player.email" placeholder="E-mail" tabindex="3" required />
+                    name="inputEmail" class="form-control" type="email" ng-model="player.email" placeholder="E-Mail"
+                    tabindex="3" required />
+            </div>
+            <div ng-show="createPlayerForm.inputEmail.$dirty && createPlayerForm.inputEmail.$invalid">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-4 input-error-message text-warning">
+                    <span ng-show="createPlayerForm.inputEmail.$error.required">Bitte E-Mail eingeben</span> <span
+                        ng-show="createPlayerForm.inputEmail.$error.email">Bitte valide E-Mail eingeben</span>
+                </div>
             </div>
         </div>
         <div class="form-group">
             <div class="input-group btn-group col-sm-offset-2 col-sm-4">
-                <button type="submit" class="btn btn-primary" ng-click="save(player, true)" tabindex="4">
+                <button type="submit" class="btn btn-primary" ng-click="save(player, true)" tabindex="4"
+                    ng-disabled="createPlayerForm.$invalid">
                     <i class="fa fa-floppy-o fw"></i> Speichern
                 </button>
-                <button type="submit" class="btn btn-info" ng-click="save(player, false)" tabindex="5">
+                <button type="submit" class="btn btn-info" ng-click="save(player, false)" tabindex="5"
+                    ng-disabled="createPlayerForm.$invalid">
                     Speichern &amp; noch einen <i class="fa fa-files-o"></i>
                 </button>
             </div>
@@ -38,7 +62,7 @@
     <div ng-if="error" class="panel panel-danger">
         <div class="panel-heading">Whoopsie!</div>
         <div class="panel-body">
-            <p>Irgendwas ging schief, bitte &uuml;berpr&uuml;fe deine Eingaben (Pflichtfelder, E-mail Adresse schon
+            <p>Irgendwas ging schief, bitte &uuml;berpr&uuml;fe deine Eingaben (Pflichtfelder, E-Mail Adresse schon
                 vergeben, ...).</p>
             <p>Hilft das nichts, bitte folgende Daten an Ralf schicken:</p>
             <ul>

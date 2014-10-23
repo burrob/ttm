@@ -36,6 +36,10 @@ input.ng-invalid.ng-dirty {
     background-color: #f2dede;
 }
 
+form div.input-error-message {
+    padding: 0.5em 0 0 3.5em;
+}
+
 /* dashboard panels
 -------------------------------------------------- */
 #dashboard .panel {
